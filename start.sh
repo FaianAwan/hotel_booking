@@ -9,14 +9,18 @@ echo "Current directory: $(pwd)"
 echo "Directory contents:"
 ls -la
 
-# Check if artisan file exists
-if [ -f "artisan" ]; then
-    echo "✅ artisan file found"
-    php artisan --version
+# Find artisan file
+ARTISAN_PATH=$(find . -name "artisan" -type f 2>/dev/null | head -1)
+
+if [ -n "$ARTISAN_PATH" ]; then
+    echo "✅ Found artisan at: $ARTISAN_PATH"
+    echo "Laravel version:"
+    php "$ARTISAN_PATH" --version
 else
     echo "❌ artisan file not found"
-    echo "Looking for artisan in subdirectories..."
+    echo "Searching in subdirectories..."
     find . -name "artisan" -type f
+    exit 1
 fi
 
 # Show environment variables
@@ -47,5 +51,5 @@ fi
 
 echo "🌐 Starting Laravel server on port $PORT_NUM..."
 
-# Start the Laravel development server
-exec php artisan serve --host=0.0.0.0 --port=$PORT_NUM 
+# Start the Laravel development server using the found artisan path
+exec php "$ARTISAN_PATH" serve --host=0.0.0.0 --port=$PORT_NUM 
