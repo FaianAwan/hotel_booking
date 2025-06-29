@@ -9,17 +9,23 @@ echo "Current directory: $(pwd)"
 echo "Directory contents:"
 ls -la
 
-# Find artisan file
-ARTISAN_PATH=$(find . -name "artisan" -type f 2>/dev/null | head -1)
-
-if [ -n "$ARTISAN_PATH" ]; then
-    echo "✅ Found artisan at: $ARTISAN_PATH"
+# Check if artisan file exists in current directory
+if [ -f "/var/www/artisan" ]; then
+    echo "✅ Found artisan at: /var/www/artisan"
     echo "Laravel version:"
-    php "$ARTISAN_PATH" --version
+    php /var/www/artisan --version
+    ARTISAN_PATH="/var/www/artisan"
+elif [ -f "artisan" ]; then
+    echo "✅ Found artisan at: artisan"
+    echo "Laravel version:"
+    php artisan --version
+    ARTISAN_PATH="artisan"
 else
     echo "❌ artisan file not found"
     echo "Searching in subdirectories..."
     find . -name "artisan" -type f
+    echo "Searching in /var/www..."
+    find /var/www -name "artisan" -type f
     exit 1
 fi
 
@@ -30,15 +36,15 @@ echo "APP_ENV: '$APP_ENV'"
 echo "DB_CONNECTION: '$DB_CONNECTION'"
 
 # Create SQLite database if it doesn't exist
-if [ ! -f database/database.sqlite ]; then
+if [ ! -f "/var/www/database/database.sqlite" ]; then
     echo "📊 Creating SQLite database..."
-    touch database/database.sqlite
-    chmod 664 database/database.sqlite
+    touch /var/www/database/database.sqlite
+    chmod 664 /var/www/database/database.sqlite
 fi
 
 # Set proper permissions
-chmod -R 775 storage
-chmod -R 775 bootstrap/cache
+chmod -R 775 /var/www/storage
+chmod -R 775 /var/www/bootstrap/cache
 
 # Handle PORT environment variable
 if [ -z "$PORT" ]; then
