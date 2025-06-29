@@ -18,11 +18,12 @@ class DatabaseSeeder extends Seeder
 
         // Create admin user if it doesn't exist
         User::firstOrCreate(
-            ['email' => 'admin@example.com'],
+            ['email' => 'admin@hotel.com'],
             [
-                'name' => 'Admin User',
-                'email' => 'admin@example.com',
-                'password' => Hash::make('password'),
+                'name' => 'Admin',
+                'email' => 'admin@hotel.com',
+                'password' => Hash::make('admin123'),
+                'phone' => '1234567890',
                 'usertype' => 'admin',
                 'email_verified_at' => now(),
             ]
@@ -30,11 +31,12 @@ class DatabaseSeeder extends Seeder
 
         // Create regular user if it doesn't exist
         User::firstOrCreate(
-            ['email' => 'user@example.com'],
+            ['email' => 'user@hotel.com'],
             [
-                'name' => 'Regular User',
-                'email' => 'user@example.com',
-                'password' => Hash::make('password'),
+                'name' => 'User',
+                'email' => 'user@hotel.com',
+                'password' => Hash::make('user123'),
+                'phone' => '0987654321',
                 'usertype' => 'user',
                 'email_verified_at' => now(),
             ]
@@ -42,5 +44,8 @@ class DatabaseSeeder extends Seeder
 
         // Seed rooms
         $this->call(RoomSeeder::class);
+        
+        // Seed admin users
+        $this->call(AdminUserSeeder::class);
     }
 }
