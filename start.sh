@@ -11,15 +11,15 @@ echo "APP_ENV: '$APP_ENV'"
 echo "DB_CONNECTION: '$DB_CONNECTION'"
 
 # Create SQLite database if it doesn't exist
-if [ ! -f /var/www/database/database.sqlite ]; then
+if [ ! -f database/database.sqlite ]; then
     echo "📊 Creating SQLite database..."
-    touch /var/www/database/database.sqlite
-    chmod 664 /var/www/database/database.sqlite
+    touch database/database.sqlite
+    chmod 664 database/database.sqlite
 fi
 
 # Set proper permissions
-chmod -R 775 /var/www/storage
-chmod -R 775 /var/www/bootstrap/cache
+chmod -R 775 storage
+chmod -R 775 bootstrap/cache
 
 # Handle PORT environment variable
 if [ -z "$PORT" ]; then
