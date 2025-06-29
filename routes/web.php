@@ -11,40 +11,13 @@ Route::get('/health', function() {
     return response()->json(['status' => 'ok', 'message' => 'Laravel is running']);
 });
 
-// Simple test route without database
-Route::get('/test', function() {
-    return response()->json(['status' => 'ok', 'message' => 'Test route working']);
-});
-
-// Test CSS route
-Route::get('/test-css', function() {
-    return response('body { background: red; }', 200, ['Content-Type' => 'text/css']);
-});
-
-// Test asset route
-Route::get('/test-asset', function() {
-    $cssPath = public_path('css/style.css');
-    if (file_exists($cssPath)) {
-        return response()->file($cssPath);
-    } else {
-        return response()->json(['error' => 'CSS file not found', 'path' => $cssPath]);
-    }
-});
-
 // Environment check route
 Route::get('/env-check', function() {
     return response()->json([
         'app_env' => env('APP_ENV'),
         'app_debug' => env('APP_DEBUG'),
         'db_connection' => env('DB_CONNECTION'),
-        'port' => env('PORT', 'not set'),
-        'app_url' => env('APP_URL', 'not set'),
-        'asset_urls' => [
-            'bootstrap_css' => asset('css/bootstrap.min.css'),
-            'style_css' => asset('css/style.css'),
-            'responsive_css' => asset('css/responsive.css'),
-            'logo' => asset('images/logo.png')
-        ]
+        'port' => env('PORT', 'not set')
     ]);
 });
 

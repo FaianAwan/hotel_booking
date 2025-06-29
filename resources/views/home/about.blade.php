@@ -10,7 +10,7 @@ div class="about">
                </div>
                <div class="col-md-7">
                   <div class="about_img">
-                     <figure><img src="/images/about.png" alt="#"/></figure>
+                     <figure><img src="{{ asset('images/about.png') }}" alt="#"/></figure>
                   </div>
                </div>
             </div>
