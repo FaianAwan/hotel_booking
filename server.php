@@ -52,4 +52,4 @@ echo "Starting Laravel server...\n";
 
 // Set timeout and start Laravel server
 set_time_limit(0);
-passthru("php artisan serve --host=$host --port=$port --timeout=0"); 
+passthru("php artisan serve --host=$host --port=$port"); 
