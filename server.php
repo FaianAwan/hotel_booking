@@ -48,7 +48,13 @@ passthru("php artisan migrate --force");
 echo "Running database seeding...\n";
 passthru("php artisan db:seed --force");
 
+// Optimize Laravel for production
+echo "Optimizing Laravel for production...\n";
+passthru("php artisan config:cache");
+passthru("php artisan route:cache");
+passthru("php artisan view:cache");
+
 echo "Starting PHP built-in server...\n";
 
-// Use PHP built-in server instead of Laravel serve command
+// Use PHP built-in server with proper document root
 passthru("php -S $host:$port -t public public/index.php"); 
