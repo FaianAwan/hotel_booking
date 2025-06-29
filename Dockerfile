@@ -36,7 +36,7 @@ RUN composer install --no-dev --optimize-autoloader
 # Make startup script executable
 RUN chmod +x /var/www/start.sh
 
-# Expose port (Railway will set the actual port via $PORT)
+# Expose port
 EXPOSE 8000
 
 # Use the startup script

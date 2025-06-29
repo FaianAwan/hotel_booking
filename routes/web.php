@@ -6,6 +6,11 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactController;
 
+// Health check route for Railway
+Route::get('/health', function() {
+    return response()->json(['status' => 'ok', 'message' => 'Laravel is running']);
+});
+
 // Public home page
 Route::get('/', [HomeController::class, 'index'])->name('public.home');
 

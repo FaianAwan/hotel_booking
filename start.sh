@@ -23,12 +23,6 @@ php artisan migrate --force
 echo "🌱 Seeding database..."
 php artisan db:seed --force
 
-# Clear and cache configurations
-echo "⚙️ Optimizing application..."
-php artisan config:cache
-php artisan route:cache
-php artisan view:cache
-
 # Start the application
 echo "🌐 Starting Laravel server..."
-php artisan serve --host=0.0.0.0 --port=${PORT:-8000} 
+exec php artisan serve --host=0.0.0.0 --port=${PORT:-8000} 
