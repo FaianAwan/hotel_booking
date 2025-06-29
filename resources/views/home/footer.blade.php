@@ -55,9 +55,7 @@
       </footer>
       <!-- end footer -->
       <!-- Javascript files-->
-      <script src="{{ asset('js/jquery.min.js') }}"></script>
-      <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-      <script src="{{ asset('js/jquery-3.0.0.min.js') }}"></script>
-      <!-- sidebar -->
-      <script src="{{ asset('js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mcustomscrollbar/3.1.13/jquery.mCustomScrollbar.concat.min.js"></script>
       <script src="{{ asset('js/custom.js') }}"></script>

@@ -6,7 +6,7 @@
                 <div class="full">
                     <div class="center-desk">
                         <div class="logo">
-                            <a href="{{ url('/') }}"><img src="{{ asset('images/logo.png') }}" alt="#"/></a>
+                            <a href="{{ url('/') }}"><img src="https://cdn-icons-png.flaticon.com/512/3081/3081559.png" alt="Hotel Logo" style="width: 50px; height: 50px;"/></a>
                         </div>
                     </div>
                 </div>
