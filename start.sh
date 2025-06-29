@@ -4,6 +4,21 @@
 
 echo "🚀 Starting Laravel application..."
 
+# Show current directory and file structure
+echo "Current directory: $(pwd)"
+echo "Directory contents:"
+ls -la
+
+# Check if artisan file exists
+if [ -f "artisan" ]; then
+    echo "✅ artisan file found"
+    php artisan --version
+else
+    echo "❌ artisan file not found"
+    echo "Looking for artisan in subdirectories..."
+    find . -name "artisan" -type f
+fi
+
 # Show environment variables
 echo "Environment variables:"
 echo "PORT: '$PORT'"
