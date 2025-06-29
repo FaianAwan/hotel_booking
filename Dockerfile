@@ -24,22 +24,22 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Set working directory
 WORKDIR /var/www
 
-# Copy existing application directory contents
-COPY . /var/www
-
-# Copy existing application directory permissions
-COPY --chown=www-data:www-data . /var/www
+# Copy composer files first
+COPY composer.json composer.lock ./
 
 # Install dependencies
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --no-dev --optimize-autoloader --no-interaction
+
+# Copy the rest of the application
+COPY . .
 
 # Create SQLite database
-RUN touch /var/www/database/database.sqlite
+RUN touch database/database.sqlite
 
 # Set permissions
-RUN chmod 664 /var/www/database/database.sqlite
-RUN chmod -R 775 /var/www/storage
-RUN chmod -R 775 /var/www/bootstrap/cache
+RUN chmod 664 database/database.sqlite
+RUN chmod -R 775 storage
+RUN chmod -R 775 bootstrap/cache
 
 # Expose port
 EXPOSE 8000

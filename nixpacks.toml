@@ -1,11 +1,16 @@
 [phases.setup]
-nixPkgs = ["php82", "php82Extensions.sqlite"]
+nixPkgs = ['php82', 'composer', 'sqlite']
 
 [phases.install]
+cmds = ['composer install --no-dev --optimize-autoloader']
+
+[phases.build]
 cmds = [
-  "curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer",
-  "composer install --no-dev --optimize-autoloader"
+    'touch database/database.sqlite',
+    'chmod 664 database/database.sqlite',
+    'chmod -R 775 storage',
+    'chmod -R 775 bootstrap/cache'
 ]
 
 [start]
-cmd = "php artisan serve --host=0.0.0.0 --port=$PORT" 
+cmd = 'php server.php' 
