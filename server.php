@@ -38,7 +38,18 @@ if (!file_exists('artisan')) {
     exit(1);
 }
 
-echo "Found artisan file, starting PHP built-in server...\n";
+echo "Found artisan file, setting up database...\n";
 
-// Use PHP built-in server instead of Laravel serve command
-passthru("php -S $host:$port -t public public/index.php"); 
+// Run database migrations
+echo "Running database migrations...\n";
+passthru("php artisan migrate --force");
+
+// Run database seeding
+echo "Running database seeding...\n";
+passthru("php artisan db:seed --force");
+
+echo "Starting Laravel server...\n";
+
+// Set timeout and start Laravel server
+set_time_limit(0);
+passthru("php artisan serve --host=$host --port=$port --timeout=0"); 
