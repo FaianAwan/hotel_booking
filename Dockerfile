@@ -10,7 +10,8 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip \
     sqlite3 \
-    libsqlite3-dev
+    libsqlite3-dev \
+    lsof
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -41,8 +42,11 @@ RUN chmod 664 /var/www/database/database.sqlite
 RUN chmod -R 775 /var/www/storage
 RUN chmod -R 775 /var/www/bootstrap/cache
 
+# Make startup script executable
+RUN chmod +x /var/www/start.sh
+
 # Expose port
 EXPOSE 8000
 
-# Use the PHP server script
-CMD ["php", "server.php"] 
+# Use the startup script
+CMD ["/var/www/start.sh"] 

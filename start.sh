@@ -55,6 +55,10 @@ else
     echo "✅ Using PORT from environment: $PORT_NUM"
 fi
 
+# Kill any existing processes on the port
+echo "🔧 Checking for existing processes on port $PORT_NUM..."
+lsof -ti:$PORT_NUM | xargs kill -9 2>/dev/null || echo "No existing processes found on port $PORT_NUM"
+
 echo "🌐 Starting Laravel server on port $PORT_NUM..."
 
 # Start the Laravel development server using the found artisan path

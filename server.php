@@ -38,7 +38,7 @@ if (!file_exists('artisan')) {
     exit(1);
 }
 
-echo "Found artisan file, starting Laravel server...\n";
+echo "Found artisan file, starting PHP built-in server...\n";
 
-// Start the Laravel development server with the correct port
-passthru("php artisan serve --host=$host --port=$port"); 
+// Use PHP built-in server instead of Laravel serve command
+passthru("php -S $host:$port -t public public/index.php"); 
