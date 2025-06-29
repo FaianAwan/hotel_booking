@@ -7,7 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactController;
 
 // Health check route for Railway
-Route::get('/health', function() {
+Route::get('/', function() {
     return response()->json(['status' => 'ok', 'message' => 'Laravel is running']);
 });
 
