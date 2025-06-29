@@ -4,8 +4,21 @@
 
 echo "Starting Laravel application...\n";
 
-// Get port from environment
-$port = getenv('PORT') ?: 8000;
+// Debug environment variables
+echo "Environment variables:\n";
+echo "PORT: '" . getenv('PORT') . "'\n";
+echo "APP_ENV: '" . getenv('APP_ENV') . "'\n";
+echo "DB_CONNECTION: '" . getenv('DB_CONNECTION') . "'\n";
+
+// Get port from environment - Railway sets this
+$port = getenv('PORT');
+if (!$port) {
+    $port = 8000;
+    echo "Warning: PORT environment variable not set, using default port 8000\n";
+} else {
+    echo "Using PORT from environment: $port\n";
+}
+
 $host = '0.0.0.0';
 
 echo "Starting server on $host:$port\n";
@@ -27,5 +40,5 @@ if (!file_exists('artisan')) {
 
 echo "Found artisan file, starting Laravel server...\n";
 
-// Start the Laravel development server
+// Start the Laravel development server with the correct port
 passthru("php artisan serve --host=$host --port=$port"); 
