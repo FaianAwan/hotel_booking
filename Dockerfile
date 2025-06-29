@@ -41,11 +41,8 @@ RUN chmod 664 /var/www/database/database.sqlite
 RUN chmod -R 775 /var/www/storage
 RUN chmod -R 775 /var/www/bootstrap/cache
 
-# Make startup script executable
-RUN chmod +x /var/www/start.sh
-
 # Expose port
 EXPOSE 8000
 
-# Use the startup script
-CMD ["/var/www/start.sh"] 
+# Start command with explicit port handling
+CMD php -S 0.0.0.0:${PORT:-8000} -t public public/index.php 

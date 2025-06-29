@@ -21,6 +21,10 @@ fi
 chmod -R 775 /var/www/storage
 chmod -R 775 /var/www/bootstrap/cache
 
+# Convert PORT to integer and set default
+PORT_NUM=${PORT:-8000}
+echo "🌐 Starting Laravel server on port $PORT_NUM..."
+
 # Run database migrations
 echo "📊 Running database migrations..."
 php artisan migrate --force
@@ -30,5 +34,4 @@ echo "🌱 Seeding database..."
 php artisan db:seed --force
 
 # Start the application
-echo "🌐 Starting Laravel server on port ${PORT:-8000}..."
-exec php artisan serve --host=0.0.0.0 --port=${PORT:-8000} 
+exec php artisan serve --host=0.0.0.0 --port=$PORT_NUM 
