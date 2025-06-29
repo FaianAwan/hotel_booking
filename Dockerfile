@@ -33,11 +33,16 @@ COPY --chown=www-data:www-data . /var/www
 # Install dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# Make startup script executable
-RUN chmod +x /var/www/start.sh
+# Create SQLite database
+RUN touch /var/www/database/database.sqlite
+
+# Set permissions
+RUN chmod 664 /var/www/database/database.sqlite
+RUN chmod -R 775 /var/www/storage
+RUN chmod -R 775 /var/www/bootstrap/cache
 
 # Expose port
 EXPOSE 8000
 
-# Use the startup script
-CMD ["/var/www/start.sh"] 
+# Start command with database setup
+CMD bash -c "php artisan migrate --force && php artisan db:seed --force && php artisan serve --host=0.0.0.0 --port=\${PORT:-8000}" 

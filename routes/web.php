@@ -11,6 +11,21 @@ Route::get('/health', function() {
     return response()->json(['status' => 'ok', 'message' => 'Laravel is running']);
 });
 
+// Simple test route without database
+Route::get('/test', function() {
+    return response()->json(['status' => 'ok', 'message' => 'Test route working']);
+});
+
+// Environment check route
+Route::get('/env-check', function() {
+    return response()->json([
+        'app_env' => env('APP_ENV'),
+        'app_debug' => env('APP_DEBUG'),
+        'db_connection' => env('DB_CONNECTION'),
+        'port' => env('PORT', 'not set')
+    ]);
+});
+
 // Public home page
 Route::get('/', [HomeController::class, 'index'])->name('public.home');
 
