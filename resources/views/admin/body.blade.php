@@ -252,6 +252,47 @@
           </div>
         </div>
         
+        <!-- Quick Actions - Moved to Top -->
+        <section class="no-padding-bottom" style="margin-bottom: 3rem;">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="glass-card">
+                  <div class="title">
+                    <strong><i class="fa fa-rocket mr-2" style="color: #ffd700;"></i>Quick Actions</strong>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                      <a href="{{ url('create_room') }}" class="action-btn" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <i class="fa fa-plus-circle"></i>
+                        Add New Room
+                      </a>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                      <a href="{{ url('view_room') }}" class="action-btn" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <i class="fa fa-bed"></i>
+                        View All Rooms
+                      </a>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                      <a href="{{ url('view_bookings') }}" class="action-btn" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                        <i class="fa fa-calendar"></i>
+                        View Bookings
+                      </a>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                      <a href="{{ url('/') }}" class="action-btn" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <i class="fa fa-globe"></i>
+                        Public Site
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
         <!-- Enhanced Statistics Cards -->
         <section class="no-padding-top no-padding-bottom">
           <div class="container-fluid">
@@ -316,47 +357,6 @@
                   </div>
                   <div class="modern-progress">
                     <div class="modern-progress-bar" style="width: 100%;"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        
-        <!-- Enhanced Quick Actions -->
-        <section class="no-padding-bottom">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="glass-card">
-                  <div class="title">
-                    <strong><i class="fa fa-rocket mr-2" style="color: #ffd700;"></i>Quick Actions</strong>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                      <a href="{{ url('create_room') }}" class="action-btn" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                        <i class="fa fa-plus-circle"></i>
-                        Add New Room
-                      </a>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                      <a href="{{ url('view_room') }}" class="action-btn" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-                        <i class="fa fa-bed"></i>
-                        View All Rooms
-                      </a>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                      <a href="{{ url('view_bookings') }}" class="action-btn" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
-                        <i class="fa fa-calendar"></i>
-                        View Bookings
-                      </a>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                      <a href="{{ url('/') }}" class="action-btn" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
-                        <i class="fa fa-globe"></i>
-                        Public Site
-                      </a>
-                    </div>
                   </div>
                 </div>
               </div>
