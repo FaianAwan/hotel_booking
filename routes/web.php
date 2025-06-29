@@ -26,8 +26,19 @@ Route::get('/env-check', function() {
     ]);
 });
 
-// Public home page
-Route::get('/', [HomeController::class, 'index'])->name('public.home');
+// Public home page with fallback
+Route::get('/', function() {
+    try {
+        $room = Room::all();
+        return view('home.index', compact('room'));
+    } catch (\Exception $e) {
+        return response()->json([
+            'status' => 'ok',
+            'message' => 'Laravel is running but database not ready',
+            'error' => $e->getMessage()
+        ]);
+    }
+})->name('public.home');
 
 // Test route to check authentication
 Route::get('/test-auth', function() {

@@ -44,5 +44,5 @@ RUN chmod -R 775 /var/www/bootstrap/cache
 # Expose port
 EXPOSE 8000
 
-# Start command with database setup
-CMD bash -c "php artisan migrate --force && php artisan db:seed --force && php artisan serve --host=0.0.0.0 --port=\${PORT:-8000}" 
+# Start command
+CMD php artisan serve --host=0.0.0.0 --port=8000 
