@@ -4,6 +4,12 @@
 
 echo "🚀 Starting Laravel application..."
 
+# Show environment variables
+echo "Environment variables:"
+echo "PORT: $PORT"
+echo "APP_ENV: $APP_ENV"
+echo "DB_CONNECTION: $DB_CONNECTION"
+
 # Create SQLite database if it doesn't exist
 if [ ! -f /var/www/database/database.sqlite ]; then
     echo "📊 Creating SQLite database..."
@@ -24,5 +30,5 @@ echo "🌱 Seeding database..."
 php artisan db:seed --force
 
 # Start the application
-echo "🌐 Starting Laravel server..."
+echo "🌐 Starting Laravel server on port ${PORT:-8000}..."
 exec php artisan serve --host=0.0.0.0 --port=${PORT:-8000} 
