@@ -23,6 +23,20 @@ Route::get('/env-check', function() {
     ]);
 });
 
+// Simple admin test route
+Route::get('/admin-test', function() {
+    if (auth()->check()) {
+        return response()->json([
+            'authenticated' => true,
+            'user' => auth()->user()->name,
+            'usertype' => auth()->user()->usertype,
+            'email' => auth()->user()->email
+        ]);
+    } else {
+        return response()->json(['authenticated' => false]);
+    }
+});
+
 // Authentication routes
 Route::get('/login', function() {
     return view('auth.login');

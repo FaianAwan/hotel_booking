@@ -8,8 +8,12 @@
           <div class="right-menu list-inline no-margin-bottom">    
             <!-- Log out               -->
             <div class="list-inline-item logout">  
-              <x-app-layout>
-              </x-app-layout>
+              <form method="POST" action="{{ route('logout') }}" style="display: inline;">
+                @csrf
+                <button type="submit" class="btn btn-link" style="color: #fff; text-decoration: none;">
+                  <i class="fa fa-sign-out"></i> Logout
+                </button>
+              </form>
             </div>
           </div>
         </div>
