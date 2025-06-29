@@ -33,20 +33,11 @@ COPY --chown=www-data:www-data . /var/www
 # Install dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# Create SQLite database
-RUN touch /var/www/database/database.sqlite
+# Make startup script executable
+RUN chmod +x /var/www/start.sh
 
-# Set permissions
-RUN chmod 664 /var/www/database/database.sqlite
-RUN chmod -R 775 /var/www/storage
-RUN chmod -R 775 /var/www/bootstrap/cache
-
-# Run deployment script
-RUN chmod +x deploy-railway.sh
-RUN ./deploy-railway.sh
-
-# Expose port 8000
+# Expose port (Railway will set the actual port via $PORT)
 EXPOSE 8000
 
-# Start Laravel development server
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"] 
+# Use the startup script
+CMD ["/var/www/start.sh"] 
