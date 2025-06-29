@@ -24,14 +24,11 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Set working directory
 WORKDIR /var/www
 
-# Copy composer files first
-COPY composer.json composer.lock ./
+# Copy the entire application first
+COPY . .
 
 # Install dependencies
 RUN composer install --no-dev --optimize-autoloader --no-interaction
-
-# Copy the rest of the application
-COPY . .
 
 # Create SQLite database
 RUN touch database/database.sqlite
