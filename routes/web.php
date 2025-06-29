@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 
 // Health check route for Railway
 Route::get('/health', function() {
@@ -20,6 +22,15 @@ Route::get('/env-check', function() {
         'port' => env('PORT', 'not set')
     ]);
 });
+
+// Authentication routes
+Route::get('/login', function() {
+    return view('auth.login');
+})->name('login');
+
+Route::get('/register', function() {
+    return view('auth.register');
+})->name('register');
 
 // Public home page with fallback
 Route::get('/', function() {
