@@ -48,8 +48,7 @@ passthru("php artisan migrate --force");
 echo "Running database seeding...\n";
 passthru("php artisan db:seed --force");
 
-echo "Starting Laravel server...\n";
+echo "Starting PHP built-in server...\n";
 
-// Set timeout and start Laravel server
-set_time_limit(0);
-passthru("php artisan serve --host=$host --port=$port"); 
+// Use PHP built-in server instead of Laravel serve command
+passthru("php -S $host:$port -t public public/index.php"); 
