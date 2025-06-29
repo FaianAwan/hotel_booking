@@ -38,7 +38,33 @@ Route::get('/', function() {
             'error' => $e->getMessage()
         ]);
     }
-})->name('public.home');
+})->name('home');
+
+// Public static pages
+Route::get('/about', function() {
+    return view('home.about_page');
+})->name('about');
+
+Route::get('/room', function() {
+    try {
+        $room = Room::all();
+        return view('home.room_page', compact('room'));
+    } catch (\Exception $e) {
+        return view('home.room_page', ['room' => collect()]);
+    }
+})->name('room');
+
+Route::get('/gallery', function() {
+    return view('home.gallery_page');
+})->name('gallery');
+
+Route::get('/blog', function() {
+    return view('home.blog_page');
+})->name('blog');
+
+Route::get('/contact', function() {
+    return view('home.contact_page');
+})->name('contact');
 
 // Test route to check authentication
 Route::get('/test-auth', function() {

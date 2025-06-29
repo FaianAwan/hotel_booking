@@ -13,12 +13,12 @@
                   <div class="col-md-4">
                      <h3>Menu Link</h3>
                      <ul class="link_menu">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="about.html"> about</a></li>
-                        <li><a href="room.html">Our Room</a></li>
-                        <li><a href="gallery.html">Gallery</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
+                        <li class="active"><a href="{{ route('home') }}">Home</a></li>
+                        <li><a href="{{ route('about') }}"> about</a></li>
+                        <li><a href="{{ route('room') }}">Our Room</a></li>
+                        <li><a href="{{ route('gallery') }}">Gallery</a></li>
+                        <li><a href="{{ route('blog') }}">Blog</a></li>
+                        <li><a href="{{ route('contact') }}">Contact Us</a></li>
                      </ul>
                   </div>
                   <div class="col-md-4">
@@ -55,9 +55,9 @@
       </footer>
       <!-- end footer -->
       <!-- Javascript files-->
-      <script src="js/jquery.min.js"></script>
-      <script src="js/bootstrap.bundle.min.js"></script>
-      <script src="js/jquery-3.0.0.min.js"></script>
+      <script src="{{ asset('js/jquery.min.js') }}"></script>
+      <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+      <script src="{{ asset('js/jquery-3.0.0.min.js') }}"></script>
       <!-- sidebar -->
-      <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-      <script src="js/custom.js"></script>
+      <script src="{{ asset('js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+      <script src="{{ asset('js/custom.js') }}"></script>

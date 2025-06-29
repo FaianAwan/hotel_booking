@@ -19,11 +19,11 @@
                     <div class="collapse navbar-collapse" id="navbarsExample04">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item active"><a class="nav-link" href="{{ url('/') }}">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                            <li class="nav-item"><a class="nav-link" href="room.html">Our room</a></li>
-                            <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-                            <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                            <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">About</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('room') }}">Our room</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('gallery') }}">Gallery</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('blog') }}">Blog</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact Us</a></li>
 
                             {{-- Show auth links --}}
                             @if(Route::has('login'))
