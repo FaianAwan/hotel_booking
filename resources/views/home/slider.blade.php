@@ -7,15 +7,15 @@
             </ol>
             <div class="carousel-inner">
                <div class="carousel-item active">
-                  <img class="first-slide" src="{{ asset('images/banner1.jpg') }}" alt="First slide">
+                  <img class="first-slide" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80" alt="Luxury Hotel Exterior" style="width: 100%; height: 500px; object-fit: cover;">
                   <div class="container">
                   </div>
                </div>
                <div class="carousel-item">
-                  <img class="second-slide" src="{{ asset('images/banner2.jpg') }}" alt="Second slide">
+                  <img class="second-slide" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80" alt="Elegant Hotel Room" style="width: 100%; height: 500px; object-fit: cover;">
                </div>
                <div class="carousel-item">
-                  <img class="third-slide" src="{{ asset('images/banner3.jpg') }}" alt="Third slide">
+                  <img class="third-slide" src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1200&q=80" alt="Hotel Pool" style="width: 100%; height: 500px; object-fit: cover;">
                </div>
             </div>
             <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
@@ -37,12 +37,12 @@
                            <div class="row">
                               <div class="col-md-12">
                                  <span>Arrival</span>
-                                 <img class="date_cua" src="{{ asset('images/date.png') }}">
+                                 <i class="fas fa-calendar-alt" style="color: #667eea; margin: 0 10px;"></i>
                                  <input class="online_book" placeholder="dd/mm/yyyy" type="date" name="dd/mm/yyyy">
                               </div>
                               <div class="col-md-12">
                                  <span>Departure</span>
-                                 <img class="date_cua" src="{{ asset('images/date.png') }}">
+                                 <i class="fas fa-calendar-alt" style="color: #667eea; margin: 0 10px;"></i>
                                  <input class="online_book" placeholder="dd/mm/yyyy" type="date" name="dd/mm/yyyy">
                               </div>
                               <div class="col-md-12">

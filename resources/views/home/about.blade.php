@@ -10,7 +10,7 @@ div class="about">
                </div>
                <div class="col-md-7">
                   <div class="about_img">
-                     <figure><img src="{{ asset('images/about.png') }}" alt="#"/></figure>
+                     <figure><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80" alt="About Our Hotel" style="width: 100%; height: 400px; object-fit: cover; border-radius: 12px;"/></figure>
                   </div>
                </div>
             </div>

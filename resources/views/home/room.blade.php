@@ -17,7 +17,7 @@
                <div class="col-md-4 col-sm-6">
                    <div id="serv_hover" class="room">
                        <div class="room_img">
-                           <img style="height: 200px; width:350px" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="#"/>
+                           <img style="height: 200px; width:350px; object-fit: cover; border-radius: 8px;" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="{{$rooms->room_title}}"/>
                        </div>
                        <div class="bed_room">
                            <h3>{{$rooms->room_title}}</h3>
