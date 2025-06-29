@@ -119,7 +119,29 @@
                <div class="col-md-8">
                   <div id="serv_hover" class="room">
                      <div style="padding:20px" class="room_img">
-                        <img class="room-image" src="{{ asset('room/' . $room->image) }}" alt="{{ $room->room_title }}"/>
+                        @php
+                          // Check if the image exists locally, if not use online placeholder
+                          $imagePath = public_path('room/' . $room->image);
+                          $imageUrl = '';
+                          
+                          if (file_exists($imagePath) && $room->image) {
+                              $imageUrl = asset('room/' . $room->image);
+                          } else {
+                              // Use online placeholder based on room type
+                              switch(strtolower($room->room_type)) {
+                                  case 'deluxe':
+                                      $imageUrl = 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=600&fit=crop';
+                                      break;
+                                  case 'premium':
+                                      $imageUrl = 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=800&h=600&fit=crop';
+                                      break;
+                                  default:
+                                      $imageUrl = 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=600&fit=crop';
+                                      break;
+                              }
+                          }
+                        @endphp
+                        <img class="room-image" src="{{ $imageUrl }}" alt="{{ $room->room_title }}" onerror="this.src='https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=600&fit=crop'"/>
                      </div>
                   </div>
                   <div class="room-details">

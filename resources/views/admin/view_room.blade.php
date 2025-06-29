@@ -114,7 +114,29 @@ td
     <td>{{$data->wifi}}</td>
     <td>{{$data->room_type}}</td>
     <td>
-        <img class="room-image" src="{{ asset('room/' . $data->image) }}" alt="{{ $data->room_title }}">
+        @php
+          // Check if the image exists locally, if not use online placeholder
+          $imagePath = public_path('room/' . $data->image);
+          $imageUrl = '';
+          
+          if (file_exists($imagePath) && $data->image) {
+              $imageUrl = asset('room/' . $data->image);
+          } else {
+              // Use online placeholder based on room type
+              switch(strtolower($data->room_type)) {
+                  case 'deluxe':
+                      $imageUrl = 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=150&h=100&fit=crop';
+                      break;
+                  case 'premium':
+                      $imageUrl = 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=150&h=100&fit=crop';
+                      break;
+                  default:
+                      $imageUrl = 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=150&h=100&fit=crop';
+                      break;
+              }
+          }
+        @endphp
+        <img class="room-image" src="{{ $imageUrl }}" alt="{{ $data->room_title }}" onerror="this.src='https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=150&h=100&fit=crop'">
     </td>
    <td>
     <a onclick="return confirm('Are you sure to delete this room?');" class="btn btn-danger" href="{{url('room_delete',$data->id)}}">

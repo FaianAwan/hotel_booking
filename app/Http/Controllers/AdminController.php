@@ -94,17 +94,35 @@ class AdminController extends Controller
         $data->price = $request->price;
         $data->wifi = $request->wifi;
         $data->room_type = $request->type;
-        $image=$request->image;
-        if ($image)
-        {
+        
+        // Handle image upload or online URL
+        if ($request->hasFile('image')) {
+            // File upload
+            $image = $request->image;
             $imagename = time() . '.' . $image->getClientOriginalExtension();
             $request->image->move('room', $imagename);
-            $data->image=$imagename;
-        }   
+            $data->image = $imagename;
+        } elseif ($request->filled('image_url')) {
+            // Online image URL
+            $data->image = $request->image_url;
+        } else {
+            // Use default placeholder based on room type
+            switch(strtolower($request->type)) {
+                case 'deluxe':
+                    $data->image = 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=600&fit=crop';
+                    break;
+                case 'premium':
+                    $data->image = 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=800&h=600&fit=crop';
+                    break;
+                default:
+                    $data->image = 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=600&fit=crop';
+                    break;
+            }
+        }
 
         $data->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Room added successfully!');
     }
 
     public function view_room()
