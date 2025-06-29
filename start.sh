@@ -6,9 +6,9 @@ echo "🚀 Starting Laravel application..."
 
 # Show environment variables
 echo "Environment variables:"
-echo "PORT: $PORT"
-echo "APP_ENV: $APP_ENV"
-echo "DB_CONNECTION: $DB_CONNECTION"
+echo "PORT: '$PORT'"
+echo "APP_ENV: '$APP_ENV'"
+echo "DB_CONNECTION: '$DB_CONNECTION'"
 
 # Create SQLite database if it doesn't exist
 if [ ! -f /var/www/database/database.sqlite ]; then
@@ -21,17 +21,16 @@ fi
 chmod -R 775 /var/www/storage
 chmod -R 775 /var/www/bootstrap/cache
 
-# Convert PORT to integer and set default
-PORT_NUM=${PORT:-8000}
+# Handle PORT environment variable
+if [ -z "$PORT" ]; then
+    PORT_NUM=8000
+    echo "⚠️  PORT environment variable is empty, using default port 8000"
+else
+    PORT_NUM=$PORT
+    echo "✅ Using PORT from environment: $PORT_NUM"
+fi
+
 echo "🌐 Starting Laravel server on port $PORT_NUM..."
 
-# Run database migrations
-echo "📊 Running database migrations..."
-php artisan migrate --force
-
-# Seed the database
-echo "🌱 Seeding database..."
-php artisan db:seed --force
-
-# Start the application
+# Start the Laravel development server
 exec php artisan serve --host=0.0.0.0 --port=$PORT_NUM 
