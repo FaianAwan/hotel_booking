@@ -175,3 +175,23 @@
           margin-bottom: 40px;
         }
       </style>
+      
+      <!-- Script to hide loader -->
+      <script>
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var loader = document.querySelector('.loader_bg');
+                if (loader) {
+                    loader.classList.add('hidden');
+                }
+            }, 1000); // Hide after 1 second
+        });
+        
+        // Fallback: hide loader after 3 seconds regardless
+        setTimeout(function() {
+            var loader = document.querySelector('.loader_bg');
+            if (loader) {
+                loader.classList.add('hidden');
+            }
+        }, 3000);
+      </script>

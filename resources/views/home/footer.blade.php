@@ -55,7 +55,27 @@
       </footer>
       <!-- end footer -->
       <!-- Javascript files-->
+      <!-- Using CDN for testing -->
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mcustomscrollbar/3.1.13/jquery.mCustomScrollbar.concat.min.js"></script>
-      <script src="{{ asset('js/custom.js') }}"></script>
+      <!-- Local files as fallback -->
+      <script src="/js/jquery.min.js"></script>
+      <script src="/js/jquery-3.0.0.min.js"></script>
+      <!-- sidebar -->
+      <script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script src="/js/custom.js"></script>
+      
+      <!-- Script to hide loader -->
+      <script>
+        $(document).ready(function() {
+            // Hide loader after page loads
+            setTimeout(function() {
+                $('.loader_bg').fadeOut();
+            }, 1000);
+        });
+        
+        // Fallback: hide loader after 3 seconds
+        setTimeout(function() {
+            $('.loader_bg').fadeOut();
+        }, 3000);
+      </script>
